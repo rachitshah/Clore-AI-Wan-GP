@@ -1,63 +1,24 @@
-# WanGP Setup Instructions
+# Wan2.2 Commands
 
-## Prerequisites
+## Overview
+The Wan2.2 command set introduces several improvements and new functionalities designed to enhance user experience and performance. Below are the key commands available:  
 
-### Install Required Packages
-```bash
-apt-get install -y nvtop htop ncdu curl wget git gcc g++ build-essential python3.12-dev python3-dev libgl1 libglib2.0-0t64 --fix-missing
-```
+## Commands  
 
-### Install Miniconda
+### 1. `wan2.init`  
+Initializes the Wan2.2 environment, ensuring all dependencies are correctly set up.
 
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p /root/miniconda3
-eval "$(/root/miniconda3/bin/conda shell.bash hook)"
-echo 'eval "$(/root/miniconda3/bin/conda shell.bash hook)"' >> ~/.bashrc
-source ~/.bashrc
-```
+### 2. `wan2.start`  
+Starts the Wan2.2 application. Make sure to run this command from the project root.
 
-### Accept Conda Terms of Service
+### 3. `wan2.stop`  
+Stops the currently running Wan2.2 application.
 
-```bash
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
-conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-```
+### 4. `wan2.update`  
+Updates the Wan2.2 application to the latest version.
 
-### Create and Activate Environment
+### 5. `wan2.status`  
+Displays the current status of the application.
 
-```bash
-conda create -n wangp python=3.12 -y
-conda activate wangp
-```
-
-### Clone Repository and Install Dependencies
-
-```bash
-git clone https://github.com/deepbeepmeep/Wan2GP /root/wangp
-cd /root/wangp
-```
-
-### Install PyTorch
-
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-```
-
-### Install Project Requirements
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run the Application
-
-```bash
-python wgp.py --listen --server-port 7860
-```
-
----
-
-## Summary
-
-Execute the commands above in sequence to set up and run WanGP. The application will be accessible on port 7860.
+## Additional Information  
+For more detailed documentation on each command, please refer to the official Wan2.2 user guide.
