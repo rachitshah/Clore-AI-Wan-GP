@@ -120,7 +120,34 @@ python generate.py --task s2v-14B --ckpt_dir ./ckpts/Wan.2-T2V-A14B --audio /pat
 python generate.py --task animate-14B --ckpt_dir ./ckpts/Wan.2-T2V-A14B --image /path/to/character.jpg --prompt "your prompt" --size 832*480
 ```
 
-## 8. Every New Session
+## 8. Insight Endpoint
+```bash
+# Start the insight server (default port 7861)
+python /path/to/insight.py
+
+# Custom port
+python /path/to/insight.py --port 8080
+
+# Query it
+curl http://localhost:7861/insight
+```
+
+Returns JSON with:
+- **gpus** — GPU name, VRAM total/used/free, utilization %, temperature, driver version
+- **cuda** — nvcc version and availability
+- **torch** — PyTorch version, CUDA support, device count
+- **python** — interpreter version and conda env path
+- **wan22** — whether the Wan2.2 repo and `generate.py` are present
+- **models** — per-model checkpoint status (present, file count, size)
+- **disk** — disk usage for `/`, `/root`, and the checkpoint directory
+
+Environment variables:
+| Variable | Default | Description |
+|---|---|---|
+| `WAN_CKPT_DIR` | `/root/wan22/ckpts` | Checkpoint directory to scan |
+| `WAN_DIR` | `/root/wan22` | Wan2.2 repo directory |
+
+## 9. Every New Session
 ```bash
 source /root/miniconda3/etc/profile.d/conda.sh
 conda activate wan22
